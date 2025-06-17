@@ -11,14 +11,14 @@ import requests
 import requests
 
 API_KEY = "ea422ddcafb2100743e10a69aa9e9bab"  # Replace with your full key
-city = "Hyderabad"
+city = "Hyderabad" #intialization but the weather of any city can be answered 
 BASE_URL = f"http://api.openweathermap.org/data/2.5/weather?appid={API_KEY}&q={city}&units=metric"
 
 response = requests.get(BASE_URL)
 print("Status Code:", response.status_code)
 print("Response JSON:", response.json())
 
-# === Voice Functions ===
+#Voice Functions
 def speechtx(x):
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
@@ -134,12 +134,10 @@ def handle_commands():
             elif "exit" in data1:
                 speechtx("I hope you have enjoyed my service. Goodbye!")
                 break
-
-# === Start Listening in Thread ===
 def start_nexa():
     threading.Thread(target=handle_commands).start()
 
-# === GUI Setup ===
+#GUI Setup
 window = tk.Tk()
 window.title("Nexa - Voice Assistant")
 window.geometry("420x280")
